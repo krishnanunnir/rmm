@@ -1,2 +1,5 @@
 # This is the folder containing the virtualenv
 bot/
+logs/
+__pycache__/
+bottoken.py
