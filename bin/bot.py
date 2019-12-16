@@ -30,6 +30,7 @@ def exec_command(update, context):
 
 
 def main():
+    logging_location = log_location + log_name
     logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level= logging.INFO, filename= logging_location)
     logging.info("Bot server started")
     print(token_val)
