@@ -1,4 +1,4 @@
-from bottoken import token_val
+from properties import *
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
 
@@ -9,8 +9,10 @@ def start(update, context):
     except:
         logging.warning("Couldn't print the start message for %d",update.effective_chat.id)
 
+def get_screenshot():
+    
 def main():
-    logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level= logging.INFO, filename= "../logs/bot.log")
+    logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level= logging.INFO, filename= logging_location)
     logging.info("Bot server started")
     print(token_val)
     try:
