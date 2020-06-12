@@ -24,7 +24,7 @@ def start(update, context):
 def exec_command(update, context):
     command = update.message.text.split()
     try:
-        output = subprocess.check_output(command, cwd= currdir).decode('utf-8')
+        output = subprocess.check_output(command, cwd= curr_dir).decode('utf-8')
         logging.info("%s: %s", command, output)
         if output:
             context.bot.send_message(chat_id=update.effective_chat.id, text=output)

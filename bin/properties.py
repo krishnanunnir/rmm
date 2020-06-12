@@ -3,4 +3,4 @@ log_location = "../logs/"
 log_name = "bots.log"
 media_location = "../media/"
 permitted_commands =['ls']
-currdir = "."
+curr_dir = "."
