@@ -8,7 +8,10 @@ from datetime import datetime
 
 class CommandFilter(BaseFilter):
     def filter( self, message):
-        return message.text in permitted_commands
+        if message.text.split()[0] in permitted_commands:
+            return True
+        else:
+            logging.info("%s is not allowed to be executed in the server",message.text.split()[0])
 
 def start(update, context):
     try:
@@ -19,14 +22,16 @@ def start(update, context):
         logging.error(str(e))
 
 def exec_command(update, context):
-    command = update.message.text
+    command = update.message.text.split()
     try:
-        output = str(subprocess.check_output(command))
-        logging.info("The value of output for the command %s is %s", command, output)
-        context.bot.send_message(chat_id=update.effective_chat.id, text=output)
+        output = subprocess.check_output(command, cwd= currdir).decode('utf-8')
+        logging.info("%s: %s", command, output)
+        if output:
+            context.bot.send_message(chat_id=update.effective_chat.id, text=output)
+        else:
+            context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
     except Exception as e:
-        logging.warning("An error occured with subproccess execution of the command")
-        logging.error(str(e))
+        context.bot.send_message(chat_id=update.effective_chat.id, text=str(e))
 
 
 def main():
