@@ -1,4 +1,4 @@
-token_val = "852000759:AAHPVSGqC_Z7NQI_q9NhS3FF-bfyZT-wcKc"
+token_val = ""
 log_location = "../logs/"
 log_name = "bots.log"
 media_location = "../media/"
