@@ -40,6 +40,8 @@ def main():
     logging.info("Bot server started")
     print(token_val)
     try:
+        if token_val == "":
+            raise ValueError("Not found")
         command_filter = CommandFilter()
         updater = Updater(token= token_val, use_context= True)
         dispatcher = updater.dispatcher
@@ -48,6 +50,9 @@ def main():
         dispatcher.add_handler(start_handler)
         dispatcher.add_handler(command_message_handler)
         logging.info("Successfully initialized handlers")
+    except ValueError as ex:
+        print('It seems your token is empty!')
+        return
     except Exception as e:
         logging.warning("Error intializing handlers")
         logging.error(str(e))
