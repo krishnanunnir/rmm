@@ -22,7 +22,7 @@ run wit this bot. Just to be safe you can configure the list of commands that ca
 4. Now we need to install all requirements  
 ```cd bin && python run_once.py```
 
-5. Generate a bot in telegram and add the token in properties.py for token_val.
+5. Generate a bot in telegram, add the token value of the bot and the user ids of the users permitted to use this bot in the properties.py file.
 
 6. Configure other values in the properties.py for curr_dir, logs and permitted_commands.
 

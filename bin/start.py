@@ -24,25 +24,28 @@ def start(update, context):
 
 def exec_command(update, context):
     command_text = update.message.text
-    if(command_text[0] == "/"):
-        if command_text == "/screenshot":
-            filename = screenshot_location + "screenshot_%s.png" % str(update.effective_chat.id)
-            logging.info("Sending screenshot")
-            im = ImageGrab.grab()
-            im.save(filename)
-            photo = open(filename,'rb')
-            context.bot.send_photo(update.effective_chat.id,photo)
+    if(update.effective_chat.id in permitted_users):
+        if(command_text[0] == "/"):
+            if command_text == "/screenshot":
+                filename = screenshot_location + "screenshot_%s.png" % str(update.effective_chat.id)
+                logging.info("Sending screenshot")
+                im = ImageGrab.grab()
+                im.save(filename)
+                photo = open(filename,'rb')
+                context.bot.send_photo(update.effective_chat.id,photo)
+        else:
+            command = command_text.split()
+            try:
+                output = subprocess.check_output(command, cwd= curr_dir).decode('utf-8')
+                logging.info("%s: %s", command, output)
+                if output:
+                    context.bot.send_message(chat_id=update.effective_chat.id, text=output)
+                else:
+                    context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
+            except Exception as e:
+                context.bot.send_message(chat_id=update.effective_chat.id, text=str(e))
     else:
-        command = command_text.split()
-        try:
-            output = subprocess.check_output(command, cwd= curr_dir).decode('utf-8')
-            logging.info("%s: %s", command, output)
-            if output:
-                context.bot.send_message(chat_id=update.effective_chat.id, text=output)
-            else:
-                context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
-        except Exception as e:
-            context.bot.send_message(chat_id=update.effective_chat.id, text=str(e))
+        context.bot.send_message(chat_id=update.effective_chat.id, text="You don't have permission to use this bot!")
 
 
 def main():
