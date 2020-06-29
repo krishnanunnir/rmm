@@ -11,13 +11,13 @@ run wit this bot. Just to be safe you can configure the list of commands that ca
 
 ## How to use this?
 1. Clone this github repo  
-```git clone https://github.com/krishnanunnir/server_monitor_bot git && cd server_monitor_bot```
+```git clone https://github.com/krishnanunnir/server_monitor_bot && cd server_monitor_bot```
 
 2. Create a virtual environment  
 ``` mkdir .env && python3 -m venv .env/smb```
 
 3. Activate the virtual environment  
-```source .env/bin/activate```
+```source .env/smb/bin/activate```
 
 4. Now we need to install all requirements  
 ```cd bin && python run_once.py```
@@ -30,5 +30,5 @@ run wit this bot. Just to be safe you can configure the list of commands that ca
 ```python start.py```
 
 ## Future Additions
-1. Grabbing screenshots of the users device.
-2. Scheduling messages for an interval
+1. [X] Grabbing screenshots of the users device.
+2. [ ] Scheduling messages for an interval
