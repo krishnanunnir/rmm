@@ -1,7 +1,6 @@
 # Server Monitor Bot
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/krishnanunnir/server_monitor_bot/blob/master/LICENSE)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
-[![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 
