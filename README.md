@@ -1,4 +1,6 @@
-# Server Monitor Bot for Linux based environment
+# Server Monitor Bot
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 
 <p align="center">
   <img src="docs/bot-working.gif" height=600 width=300 />
