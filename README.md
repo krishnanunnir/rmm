@@ -18,7 +18,7 @@ This is a tool I developed to control my PC when I don't have access to it.
 
 ## How?
 1. Clone this github repo  
-```git clone https://github.com/krishnanunnir/server_monitor_bot && cd server_monitor_bot```
+```https://github.com/krishnanunnir/Remote-Machine-Monitor.git && cd Remote-Machine-Monitor```
 
 2. Create a virtual environment  
 ``` mkdir .env && python3 -m venv .env/smb```
